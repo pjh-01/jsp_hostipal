@@ -1,0 +1,110 @@
+@charset "UTF-8";
+body {
+	margin: 0px;
+	padding: 0px;
+}
+img{
+    max-width: 100%;
+ }
+.l-bk {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index:-1;
+}
+.l-box {
+	height: 750px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.l-bd {
+	width: 400px;
+	height: 470px;
+	background: rgba(0,0,0,0.7);
+	border-radius: 30px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
+.bd-title {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 15px;
+}
+.bd-title>div:first-child {
+	font-size: 30px;
+	letter-spacing: 5px;
+	padding-right: 10px;
+}
+.bd-title>div:nth-child(2) {
+	font-size: 20px;
+}
+.bd-input {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 310px;
+	color: #CDCDBB;
+}
+.bd-input>div+div {
+	margin-top: 10px;
+}
+.i-title {
+	height: 30px;
+	text-align: center;
+	font-size: 20px;	
+	letter-spacing: 20px;
+	border-bottom: 1px solid white;
+}
+.i-account, .i-phonenum, .i-password1, .i-password2 {
+	display: flex;
+	align-items: center;
+}
+ .in {
+ 	width: 100%;
+ 	height: 40px;
+ 	margin-left: 10px;
+ 	background: transparent;
+ 	border: 0;
+ 	border-bottom: 1px solid #CDCDBB;
+ 	outline: none;
+ 	color: #CDCDBB;
+ }
+ .i-check {
+ 	padding-top: 10px;
+ 	display: flex;
+ 	flex-direction: row;
+ }
+.i-submit {
+	margin-top: 20px;
+	height: 50px;
+	border: 0;
+	outline: none;
+	background: #002954;
+	font-size: 20px;
+	letter-spacing: 10px;
+	color: white;
+}
+#tips {
+	margin-left: 10px;
+	color: red;
+}
+.i-submit:hover {
+	cursor: pointer;
+}
+.bd-extr {
+	margin-top: 15px;
+	width: 200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	font-size: 15px;
+	color: #CDCDBB;
+}
+.bd-extr>div:hover {
+	cursor: pointer;
+}
