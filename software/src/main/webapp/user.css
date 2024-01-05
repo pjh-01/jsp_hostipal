@@ -1,0 +1,149 @@
+@charset "UTF-8";
+body {
+	margin: 0px;
+	padding: 0px;
+}
+.m-head{
+	display: flex;
+	flex-direction: column;
+	color: white;
+	background: #38ABBB;
+	padding: 30px 50px 0px;
+}
+.m-title{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+}
+.t-name{
+	font-size: 30px;
+}
+.t-return {
+	margin-right: 10px;
+}
+
+.u-box {
+	display: flex;
+	flex-direction: row;
+	
+}
+.u-left {
+	margin-top:100px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 10%;
+	height: 100%;
+	background: #e5e5e5;
+}
+.u-left>div {
+	font-size: 20px;
+	line-height: 70px;
+	height: 70px;
+	padding-left: 20px;
+	border-bottom: 1px solid #c0c0c0;
+}
+.u-left>div:hover {
+	cursor: pointer;
+	background: #d5d5d5;
+}
+.u-right {
+	margin-left: 22%;
+}
+.intr {
+	margin-top: 40px;
+}
+.photo {
+	display: flex;
+	flex-direction: row;
+}
+.photo>div>img {
+	width: 200px;
+}
+#a{
+	background:white;
+	border-left:10px solid #38ABBB;
+}
+.mess{
+	display:flex;
+	flex-direction:column;
+	position: absolute;
+}
+.mess>a{
+	margin:20px 10px 20px 10px;
+}
+
+#ic_order,#c_order,#cc_order,#cs{
+	margin-top:40px;
+	width:55%;
+	display:none;
+	flex-direction:column;
+	position: absolute;
+}
+.ic_o_title{
+	margin-bottom:40px;
+	font-size:20px;
+	font-weight:600;
+}
+.ic_o_title>span{
+	color:#38ABBB;
+	border-bottom:3px solid #38ABBB;
+}
+.all_order{
+	display:flex;
+	flex-direction:column-reverse;
+}
+
+.order{
+	padding-left:30px;
+	padding-top:10px;
+	align-items:center;
+	background:#e5e5e5;
+	margin-bottom:20px;
+}
+.ac{
+	font-size:13px;
+	font-weight:500;
+}
+.ac_d{
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+}
+.ac_d>div{
+	width:30%;
+	text-align:center;
+}
+.department>span{
+	font-size:20px;
+}
+.doc{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	padding-bottom:10px;
+}
+.doc>span{
+	font-size:20px;
+}
+.time>span{
+	font-size:20px;
+}
+#c_order{
+	display:none;
+	position: absolute;
+}
+#cc_order{
+	display:none;
+	position: absolute;
+}
+#cs{
+	display:none;
+	position: absolute;
+}
+.cancel:hover {
+	cursor: pointer;
+	color: #38ABBB;
+}

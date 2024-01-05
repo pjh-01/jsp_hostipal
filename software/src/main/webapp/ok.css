@@ -1,0 +1,44 @@
+@charset "UTF-8";
+body {
+	margin: 0px;
+	padding: 0px;
+}
+.m-box {
+	display: flex;
+	flex-direction: column;
+}
+.m-head{
+	display: flex;
+	flex-direction: column;
+	color: white;
+	background: #38ABBB;
+	padding: 30px 50px 0px;
+}
+.m-body{
+	display: flex;
+	flex-direction: column;
+	padding: 30px 50px;
+}
+.m-title{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+}
+.t-name{
+	font-size: 30px;
+}
+.t-return {
+	margin-right: 10px;
+}
+.info {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 650px;
+	font-size: 40px;
+}
+.info>div {
+	height: 150px;
+}
