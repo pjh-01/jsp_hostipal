@@ -48,12 +48,17 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `people`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `people` (
-  `id` int DEFAULT NULL,
-  `sex` varchar(10) DEFAULT NULL,
-  `name` varchar(20) DEFAULT NULL,
-  `identity` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+create table people
+(
+    id       int auto_increment
+        primary key,
+    sex      varchar(10) null,
+    name     varchar(20) null,
+    identity varchar(20) null,
+    constraint people_id_uindex
+        unique (id)
+);
+
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -100,14 +105,29 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `account` varchar(10) DEFAULT NULL,
-  `password` varchar(12) DEFAULT NULL,
-  `phone` varchar(15) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+create table user
+(
+    id             int auto_increment
+        primary key,
+    account        varchar(10)       null,
+    password       varchar(12)       null,
+    phone          varchar(15)       null,
+    username       varchar(128)      null,
+    avatar         varchar(512)      null,
+    gender         tinyint default 0 null comment '0 - male ; 1 - female',
+    identification varchar(32)       null comment '身份证',
+    realName       varchar(128)      null
+);
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
+DROP TABLE IF EXISTS `user_people`;
+create table user_people
+(
+    userId   bigint null,
+    peopleId bigint null
+);
+
 
 --
 -- Dumping data for table `user`
