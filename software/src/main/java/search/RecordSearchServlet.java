@@ -27,7 +27,7 @@ public class RecordSearchServlet extends HttpServlet {
         // 获取搜索类型和搜索日期参数
         int recordType = Integer.parseInt(request.getParameter("recordType"));
         String account = request.getParameter("account");
-        String Date = request.getParameter("Date");
+        String date = request.getParameter("date");
 
         String connStr = "jdbc:mysql://localhost:3306/Hospital?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai";
         try (Connection conn = DriverManager.getConnection(connStr, "root", "123456")) {
@@ -41,7 +41,7 @@ public class RecordSearchServlet extends HttpServlet {
                 pstmt.setString(2, account);
 
                 // 追加日期条件
-                pstmt.setString(3, "%" + Date + "%");
+                pstmt.setString(3, "%" + date + "%");
 
                 // 执行查询
                 try (ResultSet rs = pstmt.executeQuery()) {
@@ -61,13 +61,27 @@ public class RecordSearchServlet extends HttpServlet {
                         String dname = rs.getString("dname");
 
                         // 输出到 HTML
+                        
+                        
+                        System.out.println("订单号: " + oid);
+                        System.out.println("时间: " + time);
+                        System.out.println("科室: " + department);
+                        System.out.println("医师姓名: " + dname);
+                        System.out.println("---------------");
+
+
+                        
                         out.println("<div class=\"order\">");
                         out.println("<div class=\"ac\">订单号<span>( " + oid + " )</span></div>");
                         out.println("<div class=\"ac_d\">");
                         out.println("<div class=\"department\">科室：<span>【" + department + "】</span></div>");
                         out.println("<div class=\"doc\">就诊医师<span>" + dname + "</span></div>");
                         out.println("<div class=\"time\">时间:<span>" + time + "</span></div>");
+                        if (recordType == 1) {
+                            out.println("<div class=\"cancel\" onclick=\"cancel(" + oid + ",'" + account + "')\">取消预约</div>");
+                        }
                         out.println("</div></div>");
+                        
                     }
 
                     // 输出 HTML 底部
