@@ -86,7 +86,24 @@ body {
 	margin-bottom:40px;
 	font-size:20px;
 	font-weight:600;
+	display: flex;
+	align-items: center;
 }
+
+.search_input {
+	margin-left: 20px;
+	margin-right: 20px;
+	width: 400px;
+    height: 28px;
+    font-size: 20px;
+}
+
+.search_bt {
+	width: 60px;
+    height: 33px;
+    font-size: 18px;
+}
+
 .ic_o_title>span{
 	color:#38ABBB;
 	border-bottom:3px solid #38ABBB;
