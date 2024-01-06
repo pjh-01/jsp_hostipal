@@ -1,7 +1,16 @@
 @charset "UTF-8";
 body {
+	font-family: Arial, sans-serif;
 	margin: 0px;
 	padding: 0px;
+	position: relative;
+}
+.mask {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(0, 0, 0, 0.25);
+	z-index: 10000;
 }
 .m-head{
 	display: flex;
@@ -147,3 +156,100 @@ body {
 	cursor: pointer;
 	color: #38ABBB;
 }
+
+/* Add this CSS to your user.css file */
+form {
+	margin-top: 20px;
+}
+
+label {
+	font-weight: bold;
+	display: block;
+	margin-bottom: 5px;
+}
+
+input {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 10px;
+	box-sizing: border-box;
+}
+
+input[type="submit"] {
+	background-color: #38ABBB;
+	color: white;
+	padding: 10px;
+	border: none;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover {
+	background-color: #007B8E;
+}
+
+/* Add this CSS to your user.css file */
+.u-profile {
+	display: flex;
+}
+
+.intr {
+	flex: 1;
+}
+
+.photo {
+	margin-right: 20px;
+}
+
+img {
+	max-width: 200%;
+	height: auto;
+}
+
+.info {
+	flex: 2;
+	margin-left: 100px;
+}
+
+form {
+	margin-top: 20px;
+}
+
+#floatingForm {
+	position: absolute;
+	top: 0;
+	padding: 20px 80px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: white;
+	box-shadow: 0 0 10px 0px #e3e3e3;
+	border-radius: 10px;
+	box-sizing: border-box;
+	z-index: 10001;
+}
+
+#floatingFormInner {
+	padding: 10px;
+}
+
+.ic_o_title {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-right: 10px; /* 调整右侧间隔 */
+}
+
+.ic_o_title button {
+	margin-left: 10px; /* 调整按钮与标题之间的左侧间隔 */
+	padding: 8px 12px;
+	background-color: #38ABBB;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+.ic_o_title button:hover {
+	background-color: #26707E;
+}
+/* Rest of your existing CSS styles */
+

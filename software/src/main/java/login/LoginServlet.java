@@ -34,7 +34,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			String connStr = "jdbc:mysql://localhost:3306/Hospital?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai";
-			Connection conn = DriverManager.getConnection(connStr, "root", "123456");
+			Connection conn = DriverManager.getConnection(connStr, "root", "112629");
 			Statement stmt = conn.createStatement();
 			
 			String sql = "select * from User";
