@@ -131,6 +131,22 @@
         }
 
     }
+
+	function searchRecord(recordType,Date,account) {
+	    // 创建 XMLHttpRequest 对象
+	    var xhr = new XMLHttpRequest();
+	    // 监听状态变化
+	    xhr.onreadystatechange = function () {
+	        if (xhr.readyState == 4 && xhr.status == 200) {
+	            // 更新订单区域
+	            document.getElementById("all_order").innerHTML = xhr.responseText;
+	        }
+	    };
+	    // 发送 GET 请求，注意替换为你的 Servlet 或 JSP 地址
+	    xhr.open("POST", "/software/RecordSearchServlet?recordType=" + recordType + "&Date=" + Date + "&account=" + account, true);
+	    xhr.send();
+	}
+
 </script>
 <body>
 <div class="mask" style="display: none">
@@ -227,100 +243,145 @@
         </div>
 
 
-        <div id="ic_order">
-            <%
+			<div id="ic_order">
+				<%
+				Class.forName("com.mysql.cj.jdbc.Driver");
+				String connStr = "jdbc:mysql://localhost:3306/hospital?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai";
+				Connection conn = DriverManager.getConnection(connStr, "root", "123456");
+				Statement stmt = conn.createStatement();
+				String sql = "select * from record natural join doctor where ostatus=1 and account ='" + account + "'";
+				ResultSet rs = stmt.executeQuery(sql);
+				if (rs != null) {
+				%>
+				<div class="ic_o_title">
+					<span>未完成订单</span>
+					<input class="search_input" id="record1_search_input" type="text" placeholder="请输入日期进行查询，如12-1">
+					<button class="search_bt" onclick="searchRecord(1,document.getElementById('record1_search_input').value,'<%=account%>')">搜索</button>
+				</div>
+				<div class="all_order">
+					<%
+					int no = 0;
+					while (rs.next()) {
+						no++;
+						int oid = rs.getInt("oid");
+						String time = rs.getString("time");
+						String department = rs.getString("darea");
+						String dname = rs.getString("dname");
+					%>
+					<div class="order">
+						<div class="ac">
+							订单号<span>( <%=no%> )
+							</span>
+						</div>
+						<div class="ac_d">
+							<div class="department">
+								科室：<span>【<%=department%>】
+								</span>
+							</div>
+							<div class="doc">
+								就诊医师<span><%=dname%></span>
+							</div>
+							<div class="time">
+								时间:<span><%=time%></span>
+							</div>
+							<div class="cancel" onclick="cancel(<%=oid%>,'<%=account%>')">取消预约</div>
+						</div>
+					</div>
 
-                String sql = "select * from record natural join doctor where ostatus=1 and account ='" + account + "'";
-                ResultSet rs = stmt.executeQuery(sql);
-                if (rs != null) {
-            %>
-            <div class="ic_o_title"><span>未完成订单</span></div>
-            <div class="all_order">
-                <%
-                    int no = 0;
-                    while (rs.next()) {
-                        no++;
-                        int oid = rs.getInt("oid");
-                        String time = rs.getString("time");
-                        String department = rs.getString("darea");
-                        String dname = rs.getString("dname");
-                %>
-                <div class="order">
-                    <div class="ac">订单号<span>( <%=no %> )</span></div>
-                    <div class="ac_d">
-                        <div class="department">科室：<span>【<%=department %>】</span></div>
-                        <div class="doc">就诊医师<span><%=dname %></span></div>
-                        <div class="time">时间:<span><%=time %></span></div>
-                        <div class="cancel" onclick="cancel(<%=oid%>,'<%=account%>')">取消预约</div>
-                    </div>
-                </div>
+					<%
+					}
+					}
+					%>
+				</div>
+			</div>
+			<div id="c_order">
+				<%
+				sql = "select * from record natural join doctor where ostatus=2 and account ='" + account + "'";
+				rs = stmt.executeQuery(sql);
+				if (rs != null) {
+				%>
+				<div class="ic_o_title">
+					<span>已完成订单</span>
+					<input class="search_input" id="record2_search_input" type="text" placeholder="请输入日期进行查询，如12-1">
+					<button class="search_bt" onclick="searchRecord(2,document.getElementById('record2_search_input').value,'<%=account%>')">搜索</button>
+				</div>
+				<div class="all_order">
+					<%
+					int no = 0;
+					while (rs.next()) {
+						no++;
+						int oid = rs.getInt("oid");
+						String time = rs.getString("time");
+						String department = rs.getString("darea");
+						String dname = rs.getString("dname");
+					%>
+					<div class="order">
+						<div class="ac">
+							订单号<span>( <%=no%> )
+							</span>
+						</div>
+						<div class="ac_d">
+							<div class="department">
+								科室：<span>【<%=department%>】
+								</span>
+							</div>
+							<div class="doc">
+								就诊医师<span><%=dname%></span>
+							</div>
+							<div class="time">
+								时间:<span><%=time%></span>
+							</div>
+						</div>
+					</div>
 
-                <%
-                        }
-                    }
-                %>
-            </div>
-        </div>
-        <div id="c_order">
-            <%
-                sql = "select * from record natural join doctor where ostatus=2 and account ='" + account + "'";
-                rs = stmt.executeQuery(sql);
-                if (rs != null) {
-            %>
-            <div class="ic_o_title"><span>已完成订单</span></div>
-            <div class="all_order">
-                <%
-                    int no = 0;
-                    while (rs.next()) {
-                        no++;
-                        int oid = rs.getInt("oid");
-                        String time = rs.getString("time");
-                        String department = rs.getString("darea");
-                        String dname = rs.getString("dname");
-                %>
-                <div class="order">
-                    <div class="ac">订单号<span>( <%=no %> )</span></div>
-                    <div class="ac_d">
-                        <div class="department">科室：<span>【<%=department %>】</span></div>
-                        <div class="doc">就诊医师<span><%=dname %></span></div>
-                        <div class="time">时间:<span><%=time %></span></div>
-                    </div>
-                </div>
-
-                <%
-                        }
-                    }
-                %>
-            </div>
-        </div>
+					<%
+					}
+					}
+					%>
+				</div>
+			</div>
 
 
-        <div id="cc_order">
-            <%
-                sql = "select * from record natural join doctor where ostatus=3 and account ='" + account + "'";
-                rs = stmt.executeQuery(sql);
-                if (rs != null) {
-            %>
-            <div class="ic_o_title"><span>已取消订单</span></div>
-            <div class="all_order">
-                <%
-                    int no = 0;
-                    while (rs.next()) {
+			<div id="cc_order">
+				<%
+				sql = "select * from record natural join doctor where ostatus=3 and account ='" + account + "'";
+				rs = stmt.executeQuery(sql);
+				if (rs != null) {
+				%>
+				<div class="ic_o_title">
+					<span>已取消订单</span>
+					<input class="search_input" id="record3_search_input" type="text" placeholder="请输入日期进行查询，如12-1">
+					<button class="search_bt" onclick="searchRecord(3,document.getElementById('record3_search_input').value,'<%=account%>')">搜索</button>
+				</div>
+				<div class="all_order" id="all_order">
+					<%
+					int no = 0;
+					while (rs.next()) {
 
-                        no++;
-                        int oid = rs.getInt("oid");
-                        String time = rs.getString("time");
-                        String department = rs.getString("darea");
-                        String dname = rs.getString("dname");
-                %>
-                <div class="order">
-                    <div class="ac">订单号<span>( <%=no %> )</span></div>
-                    <div class="ac_d">
-                        <div class="department">科室：<span>【<%=department %>】</span></div>
-                        <div class="doc">就诊医师<span><%=dname %></span></div>
-                        <div class="time">时间:<span><%=time %></span></div>
-                    </div>
-                </div>
+						no++;
+						int oid = rs.getInt("oid");
+						String time = rs.getString("time");
+						String department = rs.getString("darea");
+						String dname = rs.getString("dname");
+					%>
+					<div class="order">
+						<div class="ac">
+							订单号<span>( <%=no%> )
+							</span>
+						</div>
+						<div class="ac_d">
+							<div class="department">
+								科室：<span>【<%=department%>】
+								</span>
+							</div>
+							<div class="doc">
+								就诊医师<span><%=dname%></span>
+							</div>
+							<div class="time">
+								时间:<span><%=time%></span>
+							</div>
+						</div>
+					</div>
 
                 <%
                         }
