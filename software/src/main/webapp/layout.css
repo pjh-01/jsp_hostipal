@@ -1,0 +1,129 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  /* 背景图片在此指定，然后加了不透明遮罩 */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(/src/picture/1.jpg);
+  background-position: center;
+  background-size: cover;
+  /* 页边距 */
+  padding-left: 8%;
+  padding-right: 8%;
+  box-sizing: border-box;
+}
+/* 导航条 */
+.navbar {
+  height: 12%;
+  display: flex;
+  align-items: center;
+}
+nav {
+  flex: 1;
+  text-align: right;
+}
+nav ul li {
+  list-style: none;
+  /* 锁定单行排列 */
+  display: inline-block;
+  margin-left: 60px;
+}
+/* 改变超链接样式 */
+nav ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 2vh;
+}
+/* 选择框区域样式 */
+.select {
+  width: 79.8vw;
+  background-color: #afafaf;
+  padding: 10px;
+  margin-left: 25px;
+}
+/* 为了让表单元素不换行并保持平整 */
+form {
+  display: inline-flex;
+}
+/* 选择框体样式 */
+select {
+  height: 3vh;
+  line-height: 50px;
+  background-color: rgb(226, 226, 226);
+  border: none;
+}
+/* 输入框样式 */
+input {
+  height: 3vh;
+
+  background-color: rgb(226, 226, 226);
+  border: none;
+}
+/* 按钮样式 */
+.button {
+  width: 3vw;
+  padding: 0px;
+
+  height: 3vh;
+  line-height: 0px;
+  background-color: rgb(227, 252, 4);
+  border: none;
+  font-size: 16px;
+}
+/* 卡片样式 */
+.card {
+  width: 30%;
+  height: 28%;
+  display: inline-block;
+  /* background-color: #b8b8b8; */
+  padding: 15px 25px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 15px 24px;
+  background-position: center;
+  background-size: cover;
+}
+/* 每个卡片的背景图片在此指定 */
+.card1 {
+  background-image: url(/src/picture/1.jpg);
+}
+.card2 {
+  background-image: url(/src/picture/2.jpg);
+}
+.card3 {
+  background-image: url(/src/picture/3.jpg);
+}
+
+.card4 {
+  background-image: url(/src/picture/1.jpg);
+}
+
+.card5 {
+  background-image: url(/src/picture/1.jpg);
+}
+
+.card6 {
+  background-image: url(/src/picture/1.jpg);
+}
+/* 卡片里的字的样式 */
+h5 {
+  width: 50%;
+  position: relative;
+  left: 50%;
+  top: 80%;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+p {
+  width: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  position: relative;
+  left: 50%;
+  top: 80%;
+  color: #fff;
+}

@@ -11,7 +11,7 @@
 	var message = '<%=request.getParameter("message")%>';
 	var account = '<%=request.getParameter("account")%>';
 	if(message == "yes"){
-		window.location.href = "main.jsp?account="+account;
+		window.location.href = "index2.jsp?account="+account;
 	}
 	else if(message == "account"){
 		alert("该账号不存在！");	
@@ -35,7 +35,7 @@
 </script>
 </head>
 <body>
-	<div class="l-bk"><img src="image/login-2.png"></div>
+	<div class="l-bk"><img src="image/index.jpg"></div>
 	<div class="l-box">
 		<div class="l-bd">
 			<div class="bd-title">

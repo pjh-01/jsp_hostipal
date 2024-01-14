@@ -11,7 +11,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	color: white;
-	background: #38ABBB;
+	background: linear-gradient(135deg,#34d399, #4fa3f7);
 	padding: 30px 50px 0px;
 }
 .m-body{

@@ -1,0 +1,127 @@
+body {
+  overflow: hidden;
+}
+.container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  /* padding: 50px; */
+  /* background-color: rgb(81, 81, 81); */
+  /* box-shadow: 0 30px 50px #fdfdfd; */
+}
+#slide {
+  width: max-content;
+  margin-top: 50px;
+}
+.item {
+  /* 小纸片相对大小 */
+  width: 13%;
+  height: 35%;
+  /* 内部图片位置 */
+  background-position: 50% 50%;
+  display: inline-block;
+  transition: 0.5s;
+  background-size: cover;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translate(0, -50%);
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgb(0, 0, 0);
+}
+/* 前两个重叠显示，后面的是小方块，6个以后的先让他们消失，然后是一些切换动画效果 */
+.item:nth-child(1),
+.item:nth-child(2) {
+  left: 0%;
+  top: 0%;
+  transform: translate(0, 0);
+  border-radius: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+}
+.item:nth-child(3) {
+  left: 55%;
+}
+.item:nth-child(4) {
+  left: calc(55% + 15%);
+}
+.item:nth-child(5) {
+  left: calc(55% + 30%);
+}
+.item:nth-child(n + 6) {
+  left: calc(55% + 45%);
+  opacity: 0;
+}
+.item .content {
+  position: absolute;
+  top: 50%;
+  left: 100px;
+  width: 300px;
+  text-align: left;
+  padding: 0;
+  color:linear-gradient(135deg,#34d399, #4fa3f7);
+  transform: translate(0, -50%);
+  display: none;
+  font-family: Helvetica;
+}
+.item:nth-child(2) .content {
+  display: block;
+  z-index: 3;
+}
+/* 每一个图片的介绍，标题，文字，按钮 */
+.item .name {
+  font-size: 4em;
+  font-weight: bold;
+  opacity: 0;
+  animation: showcontent 1s ease-in-out 1 forwards;
+}
+.item .text {
+  margin: 2em 0;
+  width: 30em;
+  word-wrap: break-word;
+  opacity: 0;
+  animation: showcontent 1s ease-in-out 0.3s forwards;
+}
+.item button {
+  padding: 0.8em 2em;
+  border: none;
+  opacity: 0;
+  animation: showcontent 1s ease-in-out 0.6s forwards;
+}
+@keyframes showcontent {
+  from {
+    opacity: 0;
+    transform: translate(0, 100px);
+    filter: blur(33px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+    filter: blur(0);
+  }
+}
+/* 下面是翻页按钮 */
+.buttons {
+  position: absolute;
+  left: 9%;
+  top: 70%;
+  bottom: 30px;
+  z-index: 10;
+  text-align: center;
+  width: 100%;
+}
+.buttons button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid #555555;
+  transition: 0.5s;
+}
+/* 激活动画 */
+.buttons button:hover {
+  background-color: #ffcc01;
+}

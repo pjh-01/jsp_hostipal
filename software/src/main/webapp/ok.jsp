@@ -15,7 +15,7 @@
 	
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	String connStr = "jdbc:mysql://localhost:3306/hospital?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai";
-	Connection conn = DriverManager.getConnection(connStr, "root", "123456");
+	Connection conn = DriverManager.getConnection(connStr, "root", "root");
 	Statement stmt = conn.createStatement();	
 
 	String sql = "insert into record(did,account,time,ostatus) values("+did+",'"+account+"','"+time+"','1')";

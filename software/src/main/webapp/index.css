@@ -1,0 +1,127 @@
+/* 无边框 */
+body {
+  overflow: hidden;
+  margin: 0;
+
+}
+
+/* id选择器 */
+#index_pic {
+  /* border: 0 px; */
+  /*max-width: 200%;*/
+  /* 禁止滚动 */
+  overflow: hidden;
+  /*background-size: cover;*/
+  size: cover;
+}
+#tital {
+  color: #000000;
+  /* 绝对定位 */
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 800px;
+  /* 减去自身大小的一半 */
+  transform: translate(-50%, -50%);
+  /* 对齐模式 */
+  text-align: center;
+  /* text-decoration:none;下划线删除 */
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 4em;
+  /* 加粗-变细 */
+  font-weight: lighter;
+}
+#goto_btn {
+  /* 绝对定位 */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  /* 减去自身大小的一半 */
+  transform: translate(-50%, -50%);
+}
+/* 磨玻璃框框 */
+#container {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  width: 800px;
+  height: 400px;
+  transform: translate(-50%, -50%);
+  /* 设置元素的背景色:初始值transparent*/
+  background-color: transparent;
+  /* 边框 */
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  /* 磨玻璃样式 */
+  backdrop-filter: blur(2px);
+}
+button {
+  /* 字体家族 */
+  font-family: Helvetica;
+  /* 粗体 */
+  font-weight: bold;
+  font-size: 2em;
+  border: 0;
+  border-radius: 0.1em;
+  /* background-color: #fff; */
+  background: url(./image/brick.jpg) no-repeat;
+  background-size: cover;
+  /* overflow: hidden; */
+  padding: 2px;
+  position: relative;
+  width: 5em;
+  height: 1.5em;
+}
+/* 伪元素 */
+button::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 5.25em;
+  height: 1.75em;
+  background-color: #000000;
+  border-radius: 0.1em;
+  transition: all 0.35s;
+  z-index: -1;
+  background: linear-gradient(
+    45deg,
+    red,
+    orange,
+    yellow,
+    green,
+    cyan,
+    blue,
+    red
+  );
+  filter: blur(5px);
+  background-size: 1000%;
+  animation: amSize 40s linear infinite;
+  opacity: 0;
+}
+button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  border-radius: 0.1em;
+  /* 层级 */
+  z-index: -1;
+  opacity: 1;
+}
+@keyframes amSize {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 1000% 0;
+  }
+}
+button:hover::before {
+  opacity: 1;
+} /*悬停*/
+button:active::after {
+  opacity: 0;
+} /*激活*/

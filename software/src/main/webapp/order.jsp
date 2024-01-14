@@ -27,7 +27,7 @@
 <%
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	String connStr = "jdbc:mysql://localhost:3306/hospital?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai";
-	Connection conn = DriverManager.getConnection(connStr, "root", "123456");
+	Connection conn = DriverManager.getConnection(connStr, "root", "root");
 	Statement stmt = conn.createStatement();
 	
 	String sql = "select * from doctor";
@@ -41,7 +41,7 @@
 		<div class="m-head">
 			<div class="m-title">
 				<div class="t-name">XXXXX医院</div>
-				<div class="t-return"><a href='main.jsp?account=<%=request.getParameter("account") %>' style="color: white">返回</a></div>
+				<div class="t-return"><a href='index2.jsp?account=<%=request.getParameter("account") %>' style="color: white">返回</a></div>
 			</div>
 		</div>
 			

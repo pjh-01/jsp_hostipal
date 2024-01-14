@@ -23,7 +23,7 @@
 <%
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	String connStr = "jdbc:mysql://localhost:3306/hospital?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai";
-	Connection conn = DriverManager.getConnection(connStr, "root", "123456");
+	Connection conn = DriverManager.getConnection(connStr, "root", "root");
 	Statement stmt = conn.createStatement();	
 	int did = 1;
 	String sql = "select * from doctor where did="+did;

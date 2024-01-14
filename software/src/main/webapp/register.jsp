@@ -50,7 +50,7 @@
 </script>
 </head>
 <body>
-	<div class="l-bk"><img src="image/login-2.png"></div>
+	<div class="l-bk"><img src="image/index.jpg"></div>
 	<div class="l-box">
 		<div class="l-bd">
 			<div class="bd-title">

@@ -171,7 +171,7 @@
 		<div class="m-title">
 			<div class="t-name">XXXXX医院</div>
 			<div class="t-return">
-				<a href='main.jsp?account=<%=account%>' style="color: white">返回</a>
+				<a href='index2.jsp?account=<%=account%>' style="color: white">返回</a>
 			</div>
 		</div>
 	</div>

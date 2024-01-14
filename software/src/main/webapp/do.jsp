@@ -23,7 +23,7 @@
 <%
 	Class.forName("com.mysql.cj.jdbc.Driver");
 	String connStr = "jdbc:mysql://localhost:3306/hospital?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai";
-	Connection conn = DriverManager.getConnection(connStr, "root", "123456");
+	Connection conn = DriverManager.getConnection(connStr, "root", "root");
 	Statement stmt = conn.createStatement();	
 	int did = Integer.parseInt(request.getParameter("did").toString());
 	String sql = "select * from doctor where did="+did;
@@ -81,7 +81,7 @@
 		        </div>
 		    </div>
 		    <ul>
-		        <li class="current"><a href='main.jsp?account=<%=account %>'>首页</a></li>
+		        <li class="current"><a href='index2.jsp?account=<%=account %>'>首页</a></li>
 		        <li class=""><a>就诊评价</a></li>
 		    </ul>
 		</section>
@@ -198,7 +198,7 @@
 		</div>
 		<div class="sideframe">
 		    <section class="block">
-		        <div class="title2">同科室其他医生<a href="/hospital/1bcce_doctors.html?labId=76126">更多</a></div>
+		        <div class="title2">同科室其他医生<a href="doctors.html">更多</a></div>
 		        <ul class="sidedoctorlist">
 		                <li>
 		                    <strong class=""><a href="/doctor/372347.html">陈医生</a><i>主治医师</i></strong>
