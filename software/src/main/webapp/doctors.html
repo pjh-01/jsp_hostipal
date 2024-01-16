@@ -1,112 +1,227 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>医生信息</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.17.0/font/bootstrap-icons.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: white;
+            color: #333;
+            border-radius: 10px;
         }
-        
-        .doctor-info {
-            border: 1px solid #ccc;
+
+        header {
+            background: linear-gradient(135deg, #34d399, #4fa3f7);
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #34d399, #4fa3f7);
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            
+        }
+
+        #app {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .doctor-card {
+            border: 2px solid #34d399;
+            border-radius: 10px;
             padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+            cursor: pointer;
+            width: 300px;
+            margin-bottom: 1rem;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .doctor-name {
-            font-weight: bold;
-            text-transform: uppercase;
+
+        .doctor-card:hover {
+            transform: scale(1.05);
         }
-        
+
+        .doctor-card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+        }
+
+        .more-info-container {
+            display: none;
+            padding: 1rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #34d399, #4fa3f7);
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s ease-in-out;
+            width: 80%;
+            max-width: 400px;
+            text-align: left;
+            z-index: 1;
+        }
+
+        .doctor-card.show-info .more-info-container {
+            display: block;
+            opacity: 1;
+        }
+
+        .more-info-container h2 {
+            margin-bottom: 1rem;
+        }
+
+        .more-info-container p {
+            margin-bottom: 1rem;
+        }
+
+        .more-info-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            border-radius: 15px;
+            filter: blur(10px);
+            z-index: -1;
+        }
+
         .doctor-title {
-            color: rgb(255, 255, 128);
-        }
-        
-        .doctor-specialty {
-            margin-top: 10px;
+            background: linear-gradient(135deg, #34d399, #4fa3f7);
+            color: white;
+            border-radius: 15px;
+            padding: 0.5rem;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1;
         }
     </style>
 </head>
+
 <body>
 
-				
-	</div>
-    <h1>医生信息</h1>
+    <header>
+        <h1>医生信息</h1>
+    </header>
 
-    <div class="doctor-info">
-        <h2 class="doctor-name">张医生</h2>
-        <p class="doctor-title">主任医师</p>
-        <p class="doctor-specialty">熟练掌握呼吸系统常见病的诊治，在慢性肺病的呼吸功能锻炼、肺部肿瘤防治方面具备一定的临床经验，并在感染性疾病诊治方面有一定专长。</p>
+    <div id="app">
+        <doctor-card v-for="doctor in doctors" :key="doctor.id" :doctor="doctor"></doctor-card>
     </div>
 
-    <div class="doctor-info">
-        <h2 class="doctor-name">王医生</h2>
-        <p class="doctor-title">副主任医师</p>
-        <p class="doctor-specialty">专注于心脏病的治疗，拥有丰富的心血管手术经验，擅长冠心病的介入治疗和心脏移植手术。</p>
-    </div>
+    <footer>
+        XXX医院
+    </footer>
 
-    <div class="doctor-info">
-        <h2 class="doctor-name">李医生</h2>
-        <p class="doctor-title">主治医师</p>
-        <p class="doctor-specialty">儿科专家，致力于儿童健康，熟练诊治小儿感冒、发热、儿童免疫接种等，亲和力强。</p>
-    </div>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script>
+        const DoctorCard = {
+            props: ['doctor'],
+            template: `
+                <div class="doctor-card" @click="toggleMoreInfo" :class="{ 'show-info': doctor.showInfo }">
+                    
+                    <div class="doctor-card-content">
+                        <h2 class="doctor-name">{{ doctor.name }}</h2>
+                        <p class="doctor-title">{{ doctor.title }}</p>
+                        <p class="doctor-specialty">{{ doctor.specialty.substring(0, 20) }}...</p>
+                    </div>
+                    <div class="more-info-container">
+                        <h2>{{ doctor.name }} - {{ doctor.title }}</h2>
+                        <p>{{ doctor.specialty }}</p>
+                    </div>
+                </div>
+            `,
+            methods: {
+                toggleMoreInfo() {
+                    this.doctor.showInfo = !this.doctor.showInfo;
+                }
+            }
+        };
 
-    <div class="doctor-info">
-        <h2 class="doctor-name">赵医生</h2>
-        <p class="doctor-title">主任医师</p>
-        <p class="doctor-specialty">拥有多年泌尿外科临床经验，擅长泌尿系结石治疗、前列腺疾病手术和男性不育症的治疗。</p>
-    </div>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    doctors: [
+                        {
+                            id: 1,
+                            name: '张医生',
+                            title: '主任医师',
+                            specialty: '熟练掌握呼吸系统常见病的诊治，在慢性肺病的呼吸功能锻炼、肺部肿瘤防治方面具备一定的临床经验。',
+                            showInfo: false
+                        },
+                        {
+                            id: 2,
+                            name: '王医生',
+                            title: '副主任医师',
+                            specialty: '专注于心脏病的治疗，拥有丰富的心血管手术经验，擅长冠心病的介入治疗和心脏移植手术。',
+                            showInfo: false
+                        },
+                        {
+                            id: 3,
+                            name: '李医生',
+                            title: '主治医师',
+                            specialty: '儿科专家，致力于儿童健康，熟练诊治小儿感冒、发热、儿童免疫接种等，亲和力强。',
+                            showInfo: false
+                        },
+                        {
+                            id: 4,
+                            name: '赵医生',
+                            title: '主任医师',
+                            specialty: '拥有多年泌尿外科临床经验，擅长泌尿系结石治疗、前列腺疾病手术和男性不育症的治疗。',
+                            showInfo: false
+                        },
+                        {
+                            id: 5,
+                            name: '刘医生',
+                            title: '副主任医师',
+                            specialty: '神经科专家，在脑卒中、癫痫病、帕金森病等神经系统疾病的治疗上有着丰富的经验。',
+                            showInfo: false
+                        },
+                        {
+                            id: 6,
+                            name: '陈医生',
+                            title: '主治医师',
+                            specialty: '妇产科专家，擅长孕产期的监护和高风险妊娠的管理，为孕妇提供全面的医疗护理。',
+                            showInfo: false
+                        },
+                        
+                    ]
+                };
+            },
+            components: {
+                'doctor-card': DoctorCard,
+            }
+        });
 
-    <div class="doctor-info">
-        <h2 class="doctor-name">刘医生</h2>
-        <p class="doctor-title">副主任医师</p>
-        <p class="doctor-specialty">神经科专家，在脑卒中、癫痫病、帕金森病等神经系统疾病的治疗上有着丰富的经验。</p>
-    </div>
-
-    <div class="doctor-info">
-        <h2 class="doctor-name">陈医生</h2>
-        <p class="doctor-title">主治医师</p>
-        <p class="doctor-specialty">妇产科专家，擅长孕产期的监护和高风险妊娠的管理，为孕妇提供全面的医疗护理。</p>
-    </div>
-    
-    <div class="doctor-info">
-        <h2 class="doctor-name">黄医生</h2>
-        <p class="doctor-title">主任医师</p>
-        <p class="doctor-specialty">内科专家，擅长糖尿病、高血压和心血管疾病的综合治疗。</p>
-    </div>
-    
-    <div class="doctor-info">
-        <h2 class="doctor-name">徐医生</h2>
-        <p class="doctor-title">副主任医师</p>
-        <p class="doctor-specialty">眼科专家，具备丰富的眼科手术经验，擅长白内障手术和视网膜治疗。</p>
-    </div>
-    
-    <div class="doctor-info">
-        <h2 class="doctor-name">周医生</h2>
-        <p class="doctor-title">主治医师</p>
-        <p class="doctor-specialty">皮肤科专家，熟练治疗各种皮肤病，包括湿疹、痤疮和皮肤肿瘤。</p>
-    </div>
-    
-    <div class="doctor-info">
-        <h2 class="doctor-name">吴医生</h2>
-        <p class="doctor-title">主任医师</p>
-        <p class="doctor-specialty">外科专家，擅长肠胃外科手术，包括胃癌切除和结直肠手术。</p>
-    </div>
-    
-    <div class="doctor-info">
-        <h2 class="doctor-name">孙医生</h2>
-        <p class="doctor-title">主任医师</p>
-        <p class="doctor-specialty">耳鼻喉科专家，具备丰富的耳鼻喉手术经验，擅长扁桃体切除和鼻窦手术。</p>
-    </div>
-    
-    <div class="doctor-info">
-        <h2 class="doctor-name">朱医生</h2>
-        <p class="doctor-title">副主任医师</p>
-        <p class="doctor-specialty">口腔科专家，致力于口腔健康，擅长根管治疗和牙齿修复。</p>
-    </div>
+        app.mount('#app');
+    </script>
 
 </body>
+
 </html>
