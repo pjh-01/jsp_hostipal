@@ -10,7 +10,7 @@
     
     <link href="https://static.39.net/pub/yyk/v3/pc/css/base.css" rel="stylesheet">
     <link href="https://static.39.net/pub/yyk/v3/pc/css/hospital.css" rel="stylesheet">
-    <link rel="stylesheet" href="do.css">
+    <link rel="stylesheet" href="do2.css">
     <script src="https://static.39.net/lib/jquery/core/jquery-1.7.2.min.js"></script>
     <script>
     	function toRegister(did,account,time){
