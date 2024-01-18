@@ -47,21 +47,17 @@
 			<div class="m-intr">
 				<div>首页</div>
 				<div>医院介绍</div>
-				<div>院区介绍</div>
 				<div>患者服务</div>
-				<div>护理风采</div>
-				<div>科学研究</div>
 				<div>教育培训</div>
 				<div>新闻动态</div>
 				<div>通知公告</div>
-				<div>采购标准</div>
 				<div>捐赠指南</div>
 			</div>
 		</div>
 		<div class="m-image"></div>
 		<div class="m-body">
 			<div class="m-left">
-				<div class="l-title">患者服务</div>
+				<div class="l-title">功能模块</div>
 				<div class="appointments" onclick="goTo()">
 					<div class="info">
 						<svg t="1669727516057" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12565" width="120" height="120"><path d="M512 925.2c-22.6 0-43.8-8.8-59.8-24.8L123.6 571.8c-16-16-24.8-37.2-24.8-59.8 0-22.6 8.8-43.8 24.8-59.8l328.5-328.5c16-16 37.2-24.8 59.8-24.8 22.6 0 43.8 8.8 59.8 24.8l328.5 328.5c16 16 24.8 37.2 24.8 59.8 0 22.6-8.8 43.8-24.8 59.8L571.8 900.4c-16 16-37.2 24.8-59.8 24.8z m0-776.4c-9.2 0-17.9 3.6-24.5 10.1L159 487.5c-6.5 6.5-10.1 15.2-10.1 24.5 0 9.2 3.6 17.9 10.1 24.5L487.5 865c6.5 6.5 15.2 10.1 24.5 10.1s17.9-3.6 24.5-10.1L865 536.5c6.5-6.5 10.1-15.2 10.1-24.5 0-9.2-3.6-17.9-10.1-24.5L536.5 159c-6.6-6.6-15.3-10.2-24.5-10.2z" p-id="12566" fill="#ffffff"></path><path d="M348 472h329v80H348z" p-id="12567" fill="#ffffff"></path><path d="M472 671V347h80v324z" p-id="12568" fill="#ffffff"></path></svg>
