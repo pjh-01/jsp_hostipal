@@ -1,0 +1,107 @@
+@charset "UTF-8";
+body {
+	margin: 0px;
+	padding: 0px;
+	background-color: #fff; /* 保持页面背景为白色 */
+}
+
+.m-box {
+	display: flex;
+	flex-direction: column;
+}
+
+.m-head {
+	display: flex;
+	flex-direction: column;
+	color: white;
+	background: linear-gradient(135deg, #34d399, #4fa3f7);
+	padding: 30px 50px 0px;
+	box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+}
+
+.m-body {
+	display: flex;
+	flex-direction: column;
+	padding: 30px 50px;
+	box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+	border-radius: 10px; /* 圆角效果 */
+	background: rgba(255, 255, 255, 0.95); /* 使用毛玻璃效果 */
+}
+
+.m-title {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.t-name {
+	font-size: 30px;
+}
+
+.t-return {
+	margin-right: 10px;
+}
+
+.row {
+	height: 64.8px;
+	display: flex;
+	flex-direction: row;
+	font-size: 16px;
+	color: #666;
+	line-height: 64px;
+	text-align: center;
+	border-right: #f0f0f0 1px solid;
+	transition: background 0.3s; /* 添加主题色动效 */
+	border-radius: 10px; /* 圆角效果 */
+}
+
+.row > div {
+	width: 95px;
+}
+
+.chuzhen {
+	background: rgba(210, 236, 241, 0.7); /* 使用毛玻璃效果 */
+	color: #1e9cb9;
+	cursor: pointer;
+	transition: background 0.3s; /* 添加主题色动效 */
+	border-radius: 10px; /* 圆角效果 */
+}
+
+.chuzhen:hover {
+	background: #1e9cb9; /* 鼠标悬停时改变背景色 */
+	color: #fff; /* 改变文字颜色 */
+}
+
+.mainframe {
+  border: 1px solid #34d399; 
+  border-radius: 10px; 
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.8); 
+  transition: border 0.3s, background 0.3s; 
+}
+
+
+.btn {
+  background: #34d399;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s; 
+}
+
+
+.btn:hover {
+  background: #4fa3f7; 
+  transform: scale(1.05); 
+}
+
+
+.mainframe:hover {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+}
+
+
