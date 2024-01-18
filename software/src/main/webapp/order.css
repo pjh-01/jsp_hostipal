@@ -11,8 +11,13 @@ body {
 	display: flex;
 	flex-direction: column;
 	color: white;
-	background: linear-gradient(135deg,#34d399, #4fa3f7);
+	background: linear-gradient(135deg, #34d399, #4fa3f7);
 	padding: 30px 50px 0px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+	transition: box-shadow 0.3s ease-in-out; /* 添加阴影过渡效果 */
+}
+.m-head:hover {
+	box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.3); /* 悬停时的阴影效果 */
 }
 .m-body{
 	display: flex;
@@ -35,24 +40,36 @@ body {
 }
 .b-select{
 	display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background: #F0F0F0;
-    border-bottom: #000000 1px inset;
+	flex-direction: row;
+	flex-wrap: wrap;
+	background: rgba(240, 240, 240, 0.9); /* 半透明背景色 */
+	border-radius: 10px; /* 圆角 */
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+	padding: 15px 20px;
+	transition: box-shadow 0.3s ease-in-out; /* 添加阴影过渡效果 */
+}
+.b-select:hover {
+	box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* 悬停时的阴影效果 */
 }
 .b-select>div{
 	margin-bottom: 5px;
 	font-size: 17px;
+	padding: 8px 15px;
+	border-radius: 20px; /* 圆角 */
+	transition: background-color 0.3s ease-in-out; /* 添加背景色过渡效果 */
 }
 .b-select>div:first-child {
 	color: #646464;
+	font-weight: bold;
+	background: #F0F0F0; /* 背景色 */
 }
 .b-select>div+div {
 	margin-left: 25px;
 }
 .b-select>div:not(:first-child):hover{
 	cursor: pointer;
-	color: #1e9eb9;
+	background-color: #1e9eb9; /* 悬停时的背景色 */
+	color: white; /* 文本颜色调整为白色 */
 }
 .b-keshi {
 	display: flex;
@@ -60,7 +77,14 @@ body {
 	flex-wrap: wrap;
 	color: #6e6e6e;
 	padding-left: 75px;
-	background: #F0F0F0;
+	background: rgba(240, 240, 240, 0.9); /* 半透明背景色 */
+	border-radius: 10px; /* 圆角 */
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+	padding: 15px 20px;
+	transition: box-shadow 0.3s ease-in-out; /* 添加阴影过渡效果 */
+}
+.b-keshi:hover {
+	box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* 悬停时的阴影效果 */
 }
 .b-keshi>div+div {
 	margin-left: 25px;
@@ -78,7 +102,7 @@ body {
 	flex-direction: row;
 	text-align: center;
 	height: 40px;
-	line-height: 30px;
+	line-height: 40px;
 	margin: 30px 0px 20px;
 }
 .list-title>div {
@@ -92,12 +116,17 @@ body {
 }
 .list-item{
 	display: flex;
-    flex-direction: row;
-    border-bottom: #cccccc 2px dashed;
-    height: 135px;
+	flex-direction: row;
+	border-bottom: #cccccc 2px dashed;
+	height: 135px;
+	position: relative; /* 添加相对定位 */
+	transition: transform 0.3s ease-in-out; /* 添加平移过渡效果 */
 }
 .list-item+.list-item {
 	margin-top: 10px;
+}
+.list-item:hover {
+	transform: translateX(10px); /* 悬停时平移效果 */
 }
 .item-info{
 	display: flex;
@@ -113,19 +142,25 @@ body {
 }
 .doctor-photo>img {
 	height: auto;
-	width: 100px;;
+	width: 100px;
 	max-height: 100%;
-	max-wodth: 100%;
+	max-width: 100%;
+	border-radius: 10px;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+	transition: transform 0.3s ease-in-out; /* 添加缩放过渡效果 */
+}
+.doctor-photo>img:hover {
+	transform: scale(1.1); /* 悬停时缩放效果 */
 }
 .doctor-info {
 	margin-right: 130px;
 }
 .doctor_name{
 	font-size:24px;
-	line-height: 20px;
-    font-weight: 400;
+	line-height: 28px;
+    font-weight: 500;
     display: block;
-    margin-top:12px;
+    margin-top: 12px;
     margin-bottom: 8px;
 }
 .doctor_name:hover{
@@ -178,10 +213,15 @@ body {
 	margin-top: 50px;
 }
 
-
-
-
-
-
-
-
+/* 添加毛玻璃效果 */
+body::before {
+    content: "";
+    background: inherit;
+    filter: blur(10px); /* 毛玻璃效果 */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
